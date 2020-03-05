@@ -56,14 +56,14 @@ public class SaturationEffect implements ShaderInterface {
                 + "precision mediump float;\n"
                 + "uniform samplerExternalOES sTexture;\n" + " float scale;\n"
                 + " float shift;\n" + " vec3 weights;\n" + " vec3 exponents;\n"
-                + "varying vec2 vTextureCoord;\n" + "void main() {\n"
+                + "varying vec2 vTextureCoordinate;\n" + "void main() {\n"
                 // Parameters that were created above
                 + weightsString[0]
                 + weightsString[1]
                 + weightsString[2]
                 + shiftString
                 + scaleString
-                + "  vec4 oldcolor = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 oldcolor = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  float kv = dot(oldcolor.rgb, weights) + shift;\n"
                 + "  vec3 new_color = scale * oldcolor.rgb + (1.0 - scale) * kv;\n"
                 + "  gl_FragColor= vec4(new_color, oldcolor.a);\n"
@@ -74,7 +74,7 @@ public class SaturationEffect implements ShaderInterface {
                 + exponentsString[0]
                 + exponentsString[1]
                 + exponentsString[2]
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  float de = dot(color.rgb, weights);\n"
                 + "  float inv_de = 1.0 / de;\n"
                 + "  vec3 verynew_color = de * pow(color.rgb * inv_de, exponents);\n"

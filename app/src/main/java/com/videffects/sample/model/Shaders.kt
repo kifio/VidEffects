@@ -3,6 +3,7 @@ package com.videffects.sample.model
 import android.graphics.Color
 import com.sherazkhilji.videffects.*
 import com.sherazkhilji.videffects.filter.AutoFixFilter
+import com.sherazkhilji.videffects.filter.LookupFilter
 import com.sherazkhilji.videffects.filter.GrainFilter
 import com.sherazkhilji.videffects.filter.HueFilter
 
@@ -18,6 +19,7 @@ class Shaders(width: Int, height: Int) {
             AutoFixFilter(),
             GrainFilter(width, height),
             HueFilter(),
+            LookupFilter(),
 
             // Effects
             AutoFixEffect(0.0F),

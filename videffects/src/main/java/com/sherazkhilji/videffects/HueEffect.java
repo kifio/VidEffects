@@ -32,7 +32,7 @@ public class HueEffect implements ShaderInterface {
         return "#extension GL_OES_EGL_image_external : require\n"
                 + "precision mediump float;\n"
 
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "uniform samplerExternalOES sTexture;\n"
                 + "float hue=" + hue + ";\n"
 
@@ -47,7 +47,7 @@ public class HueEffect implements ShaderInterface {
                 + "vec4 kYIQToB = vec4 (1.0, -1.1070, 1.7046, 0.0);\n"
 
 
-                + "vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
 
                 + "float YPrime = dot(color, kRGBToYPrime);\n"
                 + "float I = dot(color, kRGBToI);\n"

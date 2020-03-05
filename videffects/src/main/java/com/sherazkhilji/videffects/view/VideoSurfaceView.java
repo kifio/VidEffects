@@ -2,6 +2,7 @@ package com.sherazkhilji.videffects.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.opengl.GLES20;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.Surface;
 
 import com.sherazkhilji.videffects.NoEffect;
+import com.sherazkhilji.videffects.R;
 import com.sherazkhilji.videffects.filter.NoEffectFilter;
 import com.sherazkhilji.videffects.interfaces.Filter;
 import com.sherazkhilji.videffects.interfaces.ShaderInterface;
@@ -158,6 +160,7 @@ public class VideoSurfaceView extends GLSurfaceView {
             }
 
             mMediaPlayer.start();
+            setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.lookup_amatorka));
         }
 
         @Override
@@ -179,17 +182,20 @@ public class VideoSurfaceView extends GLSurfaceView {
                     updateSurface = false;
                 }
             }
+            this.draw();
+        }
 
-            GLES20.glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
-            GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
-            draw();
+
+        @Override
+        protected boolean isTwoInputFilterSelected() {
+            return false;
         }
 
         @Override
         protected void draw() {
             super.draw();
-            GLES20.glDrawElements(GLES20.GL_TRIANGLES, 6, GLES20.GL_UNSIGNED_INT, 0);
-            GLES20.glFinish();
+//            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         }
 
         @Override

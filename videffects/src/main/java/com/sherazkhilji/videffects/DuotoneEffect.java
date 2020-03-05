@@ -58,7 +58,7 @@ public class DuotoneEffect implements ShaderInterface {
                 + "uniform samplerExternalOES sTexture;\n"
                 + " vec3 first;\n"
                 + " vec3 second;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "void main() {\n"
                 // Parameters that were created above
                 + firstColorString[0]
@@ -68,7 +68,7 @@ public class DuotoneEffect implements ShaderInterface {
                 + secondColorString[1]
                 + secondColorString[2]
 
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  float energy = (color.r + color.g + color.b) * 0.3333;\n"
                 + "  vec3 new_color = (1.0 - energy) * first + energy * second;\n"
                 + "  gl_FragColor = vec4(new_color.rgb, color.a);\n" + "}\n";

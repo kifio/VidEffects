@@ -18,14 +18,10 @@ public class Utils {
     }
 
     public static float[] VERTICES = {
-            -1.0f, -1.0f, 0.0f, 0f, 0f,
             -1.0f,  1.0f, 0.0f, 0f, 1f,
+            -1.0f, -1.0f, 0.0f, 0f, 0f,
              1.0f,  1.0f, 0.0f, 1f, 1f,
              1.0f, -1.0f, 0.0f, 1f, 0f
-    };
-
-    public static int[] INDICES = {
-            2, 1, 0, 0, 3, 2
     };
 
     public static int loadShader(int shaderType, String source) {
@@ -52,13 +48,5 @@ public class Utils {
         vertexBuffer.put(Utils.VERTICES);
         vertexBuffer.position(0);
         return vertexBuffer;
-    }
-
-    public static IntBuffer getIndicesBuffer() {
-        IntBuffer indexBuffer = ByteBuffer.allocateDirect(Utils.INDICES.length * 4)
-                .order(ByteOrder.nativeOrder()).asIntBuffer();
-        indexBuffer.put(Utils.INDICES);
-        indexBuffer.position(0);
-        return indexBuffer;
     }
 }

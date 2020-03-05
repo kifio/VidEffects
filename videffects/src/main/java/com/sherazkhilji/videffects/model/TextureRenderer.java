@@ -2,6 +2,7 @@ package com.sherazkhilji.videffects.model;
 
 import android.opengl.GLES20;
 
+import com.sherazkhilji.videffects.filter.LookupFilter;
 import com.sherazkhilji.videffects.interfaces.Filter;
 
 class TextureRenderer extends BaseRenderer {
@@ -23,6 +24,11 @@ class TextureRenderer extends BaseRenderer {
     @Override
     protected int getFragmentShader() {
         return Utils.loadShader(GLES20.GL_FRAGMENT_SHADER, filter.getFragmentShader());
+    }
+
+    @Override
+    protected boolean isTwoInputFilterSelected() {
+        return filter instanceof LookupFilter;
     }
 
     @Override

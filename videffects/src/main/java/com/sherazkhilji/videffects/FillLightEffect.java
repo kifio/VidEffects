@@ -44,7 +44,7 @@ public class FillLightEffect implements ShaderInterface {
                 + "uniform samplerExternalOES sTexture;\n"
                 + " float mult;\n"
                 + " float igamma;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "void main()\n"
                 + "{\n"
                 // Parameters that were created above
@@ -52,7 +52,7 @@ public class FillLightEffect implements ShaderInterface {
                 + igammaString
 
                 + "  const vec3 color_weights = vec3(0.25, 0.5, 0.25);\n"
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  float lightmask = dot(color.rgb, color_weights);\n"
                 + "  float backmask = (1.0 - lightmask);\n"
                 + "  vec3 ones = vec3(1.0, 1.0, 1.0);\n"

@@ -33,10 +33,10 @@ public class BrightnessEffect implements ShaderInterface {
         return "#extension GL_OES_EGL_image_external : require\n"
                 + "precision mediump float;\n"
                 + "uniform samplerExternalOES sTexture;\n"
-                + "float brightness ;\n" + "varying vec2 vTextureCoord;\n"
+                + "float brightness ;\n" + "varying vec2 vTextureCoordinate;\n"
                 + "void main() {\n" + "  brightness =" + brightnessValue
                 + ";\n"
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  gl_FragColor = brightness * color;\n" + "}\n";
 
     }

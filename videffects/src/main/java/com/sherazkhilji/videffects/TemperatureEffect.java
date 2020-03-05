@@ -37,10 +37,10 @@ public class TemperatureEffect implements ShaderInterface {
                 + "precision mediump float;\n"
                 + "uniform samplerExternalOES sTexture;\n"
                 + " float scale;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "void main() {\n" // Parameters that were created above
                 + scaleString
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  vec3 new_color = color.rgb;\n"
                 + "  new_color.r = color.r + color.r * ( 1.0 - color.r) * scale;\n"
                 + "  new_color.b = color.b - color.b * ( 1.0 - color.b) * scale;\n"

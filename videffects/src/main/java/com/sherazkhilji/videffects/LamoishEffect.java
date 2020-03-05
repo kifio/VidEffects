@@ -68,7 +68,7 @@ public class LamoishEffect implements ShaderInterface {
                 + " float stepsize;\n"
                 + " vec2 scale;\n"
                 + " float inv_max_dist;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "float rand(vec2 loc) {\n"
                 + "  float theta1 = dot(loc, vec2(0.9898, 0.233));\n"
                 + "  float theta2 = dot(loc, vec2(12.0, 78.0));\n"
@@ -93,18 +93,18 @@ public class LamoishEffect implements ShaderInterface {
                 // sharpen
                 + "  vec3 nbr_color = vec3(0.0, 0.0, 0.0);\n"
                 + "  vec2 coord;\n"
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
-                + "  coord.x = vTextureCoord.x - 0.5 * stepsizeX;\n"
-                + "  coord.y = vTextureCoord.y - stepsizeY;\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
+                + "  coord.x = vTextureCoordinate.x - 0.5 * stepsizeX;\n"
+                + "  coord.y = vTextureCoordinate.y - stepsizeY;\n"
                 + "  nbr_color += texture2D(sTexture, coord).rgb - color.rgb;\n"
-                + "  coord.x = vTextureCoord.x - stepsizeX;\n"
-                + "  coord.y = vTextureCoord.y + 0.5 * stepsizeY;\n"
+                + "  coord.x = vTextureCoordinate.x - stepsizeX;\n"
+                + "  coord.y = vTextureCoordinate.y + 0.5 * stepsizeY;\n"
                 + "  nbr_color += texture2D(sTexture, coord).rgb - color.rgb;\n"
-                + "  coord.x = vTextureCoord.x + stepsizeX;\n"
-                + "  coord.y = vTextureCoord.y - 0.5 * stepsizeY;\n"
+                + "  coord.x = vTextureCoordinate.x + stepsizeX;\n"
+                + "  coord.y = vTextureCoordinate.y - 0.5 * stepsizeY;\n"
                 + "  nbr_color += texture2D(sTexture, coord).rgb - color.rgb;\n"
-                + "  coord.x = vTextureCoord.x + stepsizeX;\n"
-                + "  coord.y = vTextureCoord.y + 0.5 * stepsizeY;\n"
+                + "  coord.x = vTextureCoordinate.x + stepsizeX;\n"
+                + "  coord.y = vTextureCoordinate.y + 0.5 * stepsizeY;\n"
                 + "  nbr_color += texture2D(sTexture, coord).rgb - color.rgb;\n"
                 + "  vec3 s_color = vec3(color.rgb + 0.3 * nbr_color);\n"
                 +
@@ -136,13 +136,13 @@ public class LamoishEffect implements ShaderInterface {
                 + "  c_color.b = s_color.b * 0.5 + 0.25;\n"
                 +
                 // blackwhite
-                "  float dither = rand(vTextureCoord + seed);\n"
+                "  float dither = rand(vTextureCoordinate + seed);\n"
                 + "  vec3 xform = clamp((c_color.rgb - 0.15) * 1.53846, 0.0, 1.0);\n"
                 + "  vec3 temp = clamp((color.rgb + stepsize - 0.15) * 1.53846, 0.0, 1.0);\n"
                 + "  vec3 bw_color = clamp(xform + (temp - xform) * (dither - 0.5), 0.0, 1.0);\n"
                 +
                 // vignette
-                "  coord = vTextureCoord - vec2(0.5, 0.5);\n"
+                "  coord = vTextureCoordinate - vec2(0.5, 0.5);\n"
                 + "  float dist = length(coord * scale);\n"
                 + "  float lumen = 0.85 / (1.0 + exp((dist * inv_max_dist - 0.73) * 20.0)) + 0.15;\n"
                 + "  gl_FragColor = vec4(bw_color * lumen, color.a);\n" + "}\n";

@@ -64,7 +64,7 @@ public class DocumentaryEffect implements ShaderInterface {
                 + " float stepsize;\n"
                 + " float inv_max_dist;\n"
                 + " vec2 scale;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "float rand(vec2 loc) {\n"
                 + "  float theta1 = dot(loc, vec2(0.9898, 0.233));\n"
                 + "  float theta2 = dot(loc, vec2(12.0, 78.0));\n"
@@ -87,8 +87,8 @@ public class DocumentaryEffect implements ShaderInterface {
                 + stepsizeString
 
                 // black white
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
-                + "  float dither = rand(vTextureCoord + seed);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
+                + "  float dither = rand(vTextureCoordinate + seed);\n"
                 + "  vec3 xform = clamp(2.0 * color.rgb, 0.0, 1.0);\n"
                 + "  vec3 temp = clamp(2.0 * (color.rgb + stepsize), 0.0, 1.0);\n"
                 + "  vec3 new_color = clamp(xform + (temp - xform) * (dither - 0.5), 0.0, 1.0);\n"
@@ -98,7 +98,7 @@ public class DocumentaryEffect implements ShaderInterface {
                 + "  new_color = vec3(gray, gray, gray);\n"
                 +
                 // vignette
-                "  vec2 coord = vTextureCoord - vec2(0.5, 0.5);\n"
+                "  vec2 coord = vTextureCoordinate - vec2(0.5, 0.5);\n"
                 + "  float dist = length(coord * scale);\n"
                 + "  float lumen = 0.85 / (1.0 + exp((dist * inv_max_dist - 0.83) * 20.0)) + 0.15;\n"
                 + "  gl_FragColor = vec4(new_color * lumen, color.a);\n"

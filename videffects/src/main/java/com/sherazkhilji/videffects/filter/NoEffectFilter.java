@@ -11,9 +11,9 @@ public class NoEffectFilter implements Filter {
 
     private static final String FRAGMENT_SHADER = "#extension GL_OES_EGL_image_external : require\n"
             + "precision mediump float;\n"
-            + "varying vec2 vTextureCoord;\n"
+            + "varying vec2 vTextureCoordinate;\n"
             + "uniform samplerExternalOES sTexture;\n" + "void main() {\n"
-            + "  gl_FragColor = texture2D(sTexture, vTextureCoord);\n"
+            + "  gl_FragColor = texture2D(sTexture, vTextureCoordinate);\n"
             + "}\n";
 
     @Override

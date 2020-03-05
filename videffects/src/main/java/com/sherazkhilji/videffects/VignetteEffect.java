@@ -74,7 +74,7 @@ public class VignetteEffect implements ShaderInterface {
                 + " float inv_max_dist;\n"
                 + " float shade;\n"
                 + " vec2 scale;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "void main() {\n"
                 // Parameters that were created above
                 + scaleString[0]
@@ -83,10 +83,10 @@ public class VignetteEffect implements ShaderInterface {
                 + shadeString
                 + rangeString
                 + "  const float slope = 20.0;\n"
-                + "  vec2 coord = vTextureCoord - vec2(0.5, 0.5);\n"
+                + "  vec2 coord = vTextureCoordinate - vec2(0.5, 0.5);\n"
                 + "  float dist = length(coord * scale);\n"
                 + "  float lumen = shade / (1.0 + exp((dist * inv_max_dist - range) * slope)) + (1.0 - shade);\n"
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  gl_FragColor = vec4(color.rgb * lumen, color.a);\n"
                 + "}\n";
 

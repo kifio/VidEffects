@@ -31,13 +31,13 @@ public class GammaEffect implements ShaderInterface {
         return "#extension GL_OES_EGL_image_external : require\n"
                 + "precision mediump float;\n"
 
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "uniform samplerExternalOES sTexture;\n"
                 + "float gamma=" + gammaValue + ";\n"
 
                 + "void main() {\n"
 
-                + "vec4 textureColor = texture2D(sTexture, vTextureCoord);\n"
+                + "vec4 textureColor = texture2D(sTexture, vTextureCoordinate);\n"
                 + "gl_FragColor = vec4(pow(textureColor.rgb, vec3(gamma)), textureColor.w);\n"
 
                 + "}\n";

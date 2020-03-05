@@ -16,9 +16,9 @@ public class InvertColorsEffect implements ShaderInterface {
     public String getShader(GLSurfaceView mGlSurfaceView) {
         return "#extension GL_OES_EGL_image_external : require\n"
                 + "precision mediump float;\n"
-                + "varying vec2 vTextureCoord;\n"
+                + "varying vec2 vTextureCoordinate;\n"
                 + "uniform samplerExternalOES sTexture;\n" + "void main() {\n"
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  float colorR = (1.0 - color.r) / 1.0;\n"
                 + "  float colorG = (1.0 - color.g) / 1.0;\n"
                 + "  float colorB = (1.0 - color.b) / 1.0;\n"

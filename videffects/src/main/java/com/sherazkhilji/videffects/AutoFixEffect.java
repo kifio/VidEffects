@@ -41,7 +41,7 @@ public class AutoFixEffect implements ShaderInterface {
                 + " float scale;\n" + " float shift_scale;\n"
                 + " float hist_offset;\n" + " float hist_scale;\n"
                 + " float density_offset;\n" + " float density_scale;\n"
-                + "varying vec2 vTextureCoord;\n" + "void main() {\n"
+                + "varying vec2 vTextureCoordinate;\n" + "void main() {\n"
                 + "  shift_scale = "
                 + (1.0f / 256f)
                 + ";\n"
@@ -61,7 +61,7 @@ public class AutoFixEffect implements ShaderInterface {
                 + scale
                 + ";\n"
                 + "  const vec3 weights = vec3(0.33333, 0.33333, 0.33333);\n"
-                + "  vec4 color = texture2D(tex_sampler_0, vTextureCoord);\n"
+                + "  vec4 color = texture2D(tex_sampler_0, vTextureCoordinate);\n"
                 + "  float energy = dot(color.rgb, weights);\n"
                 + "  float mask_value = energy - 0.5;\n"
                 + "  float alpha;\n"

@@ -32,11 +32,11 @@ public class SepiaEffect implements ShaderInterface {
         return "#extension GL_OES_EGL_image_external : require\n"
                 + "precision mediump float;\n"
                 + "uniform samplerExternalOES sTexture;\n" + " mat3 matrix;\n"
-                + "varying vec2 vTextureCoord;\n" + "void main() {\n"
+                + "varying vec2 vTextureCoordinate;\n" + "void main() {\n"
                 + matrixString[0] + matrixString[1] + matrixString[2]
                 + matrixString[3] + matrixString[4] + matrixString[5]
                 + matrixString[6] + matrixString[7] + matrixString[8]
-                + "  vec4 color = texture2D(sTexture, vTextureCoord);\n"
+                + "  vec4 color = texture2D(sTexture, vTextureCoordinate);\n"
                 + "  vec3 new_color = min(matrix * color.rgb, 1.0);\n"
                 + "  gl_FragColor = vec4(new_color.rgb, color.a);\n" + "}\n";
 
